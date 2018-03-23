@@ -5,6 +5,7 @@
 
 body {
   background: #fbf9f7;
+  word-wrap: break-word;
 }
 
 #wrapper {

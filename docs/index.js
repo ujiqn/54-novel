@@ -41,8 +41,9 @@ function render() {
     subCtx.textAlign = "center";
     subCtx.font = TXT_SIZE + "px serif";
 
+    const innerText = [...txt.innerText]
     for (var i = 0; i < TXT_LENGTH; ++i) {
-      str = txt.innerText[i];
+      str = innerText[i];
 
       if (str) {
         subCtx.save();

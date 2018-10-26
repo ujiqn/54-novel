@@ -17,6 +17,10 @@ var WIDTH              = 550,
     subCanvas          = document.createElement("canvas"),
     subCtx             = subCanvas.getContext("2d");
 
+([].slice.call(document.querySelectorAll("[data-ga]"))).forEach(function(elm) {
+  elm.addEventListener("click", handleClickGa, false);
+});
+
 subCanvas.width = subCanvas.height = GRID_SIZE;
 img.onload = start();
 img.src    = "./img.png";
@@ -136,4 +140,8 @@ function setCharacterTransform(ctx, c) {
       ctx.translate(0, -0.25 * em);
       return;
   }
+}
+
+function handleClickGa() {
+  gtag('event', this.dataset.ga);
 }

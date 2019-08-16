@@ -1,0 +1,36 @@
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  cursor: none;
+}
+
+body {
+  margin: 0;
+  background: #fff;
+}
+
+#txt {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  margin: auto;
+  padding: 24px;
+  border: none;
+  border-radius: 8px;
+  width: 640px; height: 180px;
+  font: 24px 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, 'メイリオ', sans-serif;
+  background: #fff;
+  box-shadow: 0 0 2px rgba(0, 0, 0, .6) inset;
+  resize: none;
+  text-align: justify;
+  -webkit-appearance: none;
+}
+
+#txt:focus {
+  outline: none;
+}

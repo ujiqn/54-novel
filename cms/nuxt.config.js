@@ -15,7 +15,7 @@ export default {
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: '54-novel',
+    title: '54字の物語ジェネレーター #54字の文学賞',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no' },
@@ -73,13 +73,5 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
-  },
-
-  privateRuntimeConfig: {
-    apiKey: API_KEY
-  },
-
-  publicRuntimeConfig: {
-    apiKey: process.env.NODE_ENV !== 'production' ? API_KEY : undefined
-  },
+  }
 }

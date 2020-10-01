@@ -59,28 +59,32 @@
     }
   }
 
-  @Component({
-    async asyncData({ $config }) {
-      return await Promise.all([
+  @Component({})
+  export default class IndexPage extends Vue {
+    novel: string = '';
+    news: any[] = [];
+    books: any[] = [];
+
+    async beforeCreate() {
+      const key = '28b5c90f-7954-4d78-9bd6-516c1497263a';
+
+      await Promise.all([
         axios.get('https://54ji.microcms.io/api/v1/novel', {
-          headers: { 'X-API-KEY': $config.apiKey }
+          headers: { 'X-API-KEY': key }
         }),
         axios.get('https://54ji.microcms.io/api/v1/news', {
-          headers: { 'X-API-KEY': $config.apiKey }
+          headers: { 'X-API-KEY': key }
         }),
         axios.get('https://54ji.microcms.io/api/v1/books', {
-          headers: { 'X-API-KEY': $config.apiKey }
+          headers: { 'X-API-KEY': key }
         }),
       ]).then((res) => {
-        return {
-          novel: res[0].data.novel,
-          news: res[1].data.contents.reverse(),
-          books: res[2].data.contents.reverse()
-        };
+        this.novel = res[0].data.novel;
+        this.news = res[1].data.contents.reverse();
+        this.books = res[2].data.contents.reverse();
       });
     }
-  })
-  export default class IndexPage extends Vue {
+
     mounted() {
       var WIDTH              = 550,
           HEIGHT             = 550,

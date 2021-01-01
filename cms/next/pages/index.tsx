@@ -209,7 +209,7 @@ export default function IndexPage({ novel, books, news }) {
           target="_blank"
         >
           <img
-            src={ book.img.url }
+            src={ `${book.img.url}?w=260` }
             className={ styles['book-link-img'] }
           />
         </a>

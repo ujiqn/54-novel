@@ -38,7 +38,7 @@ export default function IndexPage({ novel, books, news }) {
       setIsInit(true);
       setImg(imgElm);
     };
-    imgElm.src = '/frame.png';
+    imgElm.src = './frame.png';
 
     ([].slice.call(document.querySelectorAll('[data-ga]'))).forEach(function(elm: HTMLElement) {
       elm.addEventListener('click', () => {

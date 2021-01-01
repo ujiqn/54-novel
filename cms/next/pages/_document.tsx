@@ -30,6 +30,7 @@ export default class Layout extends Document {
           <meta name="twitter:description" content="『54字の物語』重版記念！54字詰めの原稿用紙で物語をつくりましょう！" />
           <meta name="twitter:image:src" content="https://ujiqn.github.io/54-novel/ogp.png" />
           <meta name="format-detection" content="telephone=no" />
+          <link rel="shortcut icon" href="https://ujiqn.github.io/54-novel/favicon.ico" />
           <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121940062-1"></script>
           <script
             dangerouslySetInnerHTML={{__html: `

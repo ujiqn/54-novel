@@ -265,7 +265,7 @@ export default function IndexPage({ novel, books, news }) {
         href="https://thinking.co.jp/"
         target="_blank"
       >
-        <img src="/logo.png" />
+        <img src="./logo.png" />
       </a>
     </div>
   );

@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "@nuxt/typescript-runtime": "^2.0.0",
+    "@nuxtjs/google-gtag": "^1.0.4",
     "axios": "^0.20.0",
     "core-js": "^3.6.5",
+    "delegate": "^3.2.0",
     "nuxt": "^2.14.5"
   },
   "devDependencies": {

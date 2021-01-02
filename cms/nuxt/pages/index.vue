@@ -55,6 +55,7 @@
 
 <script lang="ts">
   import axios from 'axios';
+  import delegate from 'delegate';
   import { Component, Vue } from 'nuxt-property-decorator';
   import frame from '~/assets/img/frame.png';
 
@@ -107,10 +108,8 @@
       const subCanvas = document.createElement('canvas') as HTMLCanvasElement;
       const subCtx = subCanvas.getContext('2d') as CanvasRenderingContext2D;
 
-      ([].slice.call(document.querySelectorAll('[data-ga]'))).forEach(function(elm: HTMLElement) {
-        elm.addEventListener('click', () => {
-          handleClickGa(elm);
-        });
+      delegate('[data-ga]', 'click', function (evt) {
+        handleClickGa(evt.delegateTarget);
       });
 
       subCanvas.width = subCanvas.height = GRID_SIZE;

@@ -108,7 +108,9 @@
       const subCanvas = document.createElement('canvas') as HTMLCanvasElement;
       const subCtx = subCanvas.getContext('2d') as CanvasRenderingContext2D;
 
-      delegate('[data-ga]', 'click', function (evt) {
+      delegate('[data-ga]', 'click', function (evt: {
+        delegateTarget: HTMLElement
+      }) {
         handleClickGa(evt.delegateTarget);
       });
 

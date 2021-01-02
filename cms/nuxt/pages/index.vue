@@ -17,7 +17,12 @@
       <h1>{{ item.title }}</h1>
       <div v-html="item.html" />
     </div>
-    <a id="btn-download" ref="btn" class="btn btn-save" download="54">規約に同意して画像を保存</a>
+    <a
+      :href="href"
+      id="btn-download"
+      class="btn btn-save"
+      download="54"
+    >規約に同意して画像を保存</a>
     <div class="box">
       <h1>54字の物語 好評発売中!!</h1>
       <p>たった54字の新感覚ショートストーリー。<br />意味がわかるとゾクゾクする90の物語を収録!</p>
@@ -81,25 +86,26 @@
     }
   })
   export default class IndexPage extends Vue {
+    href:string = '';
+
     mounted() {
-      var WIDTH              = 550,
-          HEIGHT             = 550,
-          TXT_LENGTH         = 54,
-          TXT_SIZE           = 40,
-          X_MARGIN           = 425,
-          Y_MARGIN           = 51,
-          X_RANGE            = 74.5,
-          Y_RANGE            = 50,
-          X_LENGTH           = 6,
-          Y_LENGTH           = 9,
-          GRID_SIZE          = 50,
-          img                = new Image(),
-          btn                = this.$refs.btn as HTMLAnchorElement,
-          txt                = this.$refs.txt as HTMLElement,
-          canvas             = this.$refs.canvas as HTMLCanvasElement,
-          ctx                = canvas.getContext('2d') as CanvasRenderingContext2D,
-          subCanvas          = document.createElement('canvas') as HTMLCanvasElement,
-          subCtx             = subCanvas.getContext('2d') as CanvasRenderingContext2D;
+      const WIDTH = 550;
+      const HEIGHT = 550;
+      const TXT_LENGTH = 54;
+      const TXT_SIZE = 40;
+      const X_MARGIN = 425;
+      const Y_MARGIN = 51;
+      const X_RANGE = 74.5;
+      const Y_RANGE = 50;
+      const X_LENGTH = 6;
+      const Y_LENGTH = 9;
+      const GRID_SIZE = 50;
+      const img = new Image();
+      const txt = this.$refs.txt as HTMLElement;
+      const canvas = this.$refs.canvas as HTMLCanvasElement;
+      const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
+      const subCanvas = document.createElement('canvas') as HTMLCanvasElement;
+      const subCtx = subCanvas.getContext('2d') as CanvasRenderingContext2D;
 
       ([].slice.call(document.querySelectorAll('[data-ga]'))).forEach(function(elm: HTMLElement) {
         elm.addEventListener('click', () => {
@@ -108,16 +114,14 @@
       });
 
       subCanvas.width = subCanvas.height = GRID_SIZE;
-      img.onload = start;
-      img.src    = frame;
+      img.onload = () => {
+        setInterval(() => {
+          render(this);
+        }, 100);
+      };
+      img.src = frame;
 
-      function start() {
-        setInterval(render, 100);
-      }
-
-      function render() {
-        var str;
-
+      function render(instance: any) {
         canvas.width  = WIDTH;
         canvas.height = HEIGHT;
 
@@ -133,8 +137,8 @@
 
           const innerText = [...txt.innerText];
 
-          for (var i = 0; i < TXT_LENGTH; ++i) {
-            str = innerText[i];
+          for (let i = 0; i < TXT_LENGTH; ++i) {
+            const str = innerText[i];
 
             if (str) {
               subCtx.save();
@@ -147,7 +151,8 @@
             }
           }
         subCtx.restore();
-        btn.href = (canvas.toDataURL('image/png'));
+
+        instance.href = canvas.toDataURL('image/png');
       }
 
       function getX(i: number) {
@@ -275,7 +280,7 @@
 
   .btn-save {
     margin: 10px auto;
-    width: 300px; height: 60px;
+    width: 288px; height: 60px;
     line-height: 60px;
   }
 

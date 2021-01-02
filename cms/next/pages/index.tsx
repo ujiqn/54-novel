@@ -83,7 +83,7 @@ export default function IndexPage({ novel, books, news }) {
         subCtx.font = TXT_SIZE + 'px serif';
 
         for (let i = 0; i < TXT_LENGTH; ++i) {
-          let str = text[i];
+          const str = text[i];
 
           if (str) {
             subCtx.save();

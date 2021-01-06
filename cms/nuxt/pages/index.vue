@@ -67,15 +67,17 @@
 
   @Component({
     async asyncData() {
+      const headers = { 'X-API-KEY': '28b5c90f-7954-4d78-9bd6-516c1497263a' };
+
       return await Promise.all([
-        axios.get('https://54-novel.microcms.io/api/v1/novel', {
-          headers: { 'X-API-KEY': 'ff8c982b-1966-4d0f-be00-dc87ee00bc04' }
+        axios.get('https://54ji.microcms.io/api/v1/novel', {
+          headers
         }),
-        axios.get('https://54-novel.microcms.io/api/v1/news', {
-          headers: { 'X-API-KEY': 'ff8c982b-1966-4d0f-be00-dc87ee00bc04' }
+        axios.get('https://54ji.microcms.io/api/v1/news', {
+          headers
         }),
-        axios.get('https://54-novel.microcms.io/api/v1/books', {
-          headers: { 'X-API-KEY': 'ff8c982b-1966-4d0f-be00-dc87ee00bc04' }
+        axios.get('https://54ji.microcms.io/api/v1/books', {
+          headers
         }),
       ]).then((res) => {
         return {

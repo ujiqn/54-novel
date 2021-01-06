@@ -8,11 +8,14 @@ declare global {
   }
 }
 
-export default function IndexPage({ novel, books, news }) {
+export default function IndexPage() {
   const [ isInit, setIsInit ] = useState(false);
   const [ img, setImg ] = useState<HTMLImageElement>(null);
   const [ text, setText ] = useState([]);
   const [ href, setHref ] = useState('');
+  const [ novel, setNovel ] = useState('');
+  const [ news, setNews ] = useState([]);
+  const [ books, setBooks ] = useState([]);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const txtRef = useRef<HTMLDivElement>(null);
   const WIDTH = 550;
@@ -31,6 +34,26 @@ export default function IndexPage({ novel, books, news }) {
     if (isInit) {
       return;
     }
+
+    (async () => {
+      const headers = { 'X-API-KEY': 'ff8c982b-1966-4d0f-be00-dc87ee00bc04' };
+
+      await Promise.all([
+        axios.get('https://54-novel.microcms.io/api/v1/novel', {
+          headers
+        }),
+        axios.get('https://54-novel.microcms.io/api/v1/news', {
+          headers
+        }),
+        axios.get('https://54-novel.microcms.io/api/v1/books', {
+          headers
+        }),
+      ]).then((res) => {
+        setNovel(res[0].data.novel);
+        setNews(res[1].data.contents.reverse());
+        setBooks(res[2].data.contents.reverse());
+      });
+    })();
 
     const imgElm = new Image();
 
@@ -270,25 +293,3 @@ export default function IndexPage({ novel, books, news }) {
     </div>
   );
 }
-
-IndexPage.getInitialProps = async () => {
-  const headers = { 'X-API-KEY': 'ff8c982b-1966-4d0f-be00-dc87ee00bc04' };
-
-  return await Promise.all([
-    axios.get('https://54-novel.microcms.io/api/v1/novel', {
-      headers
-    }),
-    axios.get('https://54-novel.microcms.io/api/v1/news', {
-      headers
-    }),
-    axios.get('https://54-novel.microcms.io/api/v1/books', {
-      headers
-    }),
-  ]).then((res) => {
-    return {
-      novel: res[0].data.novel,
-      news: res[1].data.contents.reverse(),
-      books: res[2].data.contents.reverse()
-    };
-  });
-};

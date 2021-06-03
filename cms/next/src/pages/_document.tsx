@@ -19,8 +19,8 @@ export default class Layout extends Document {
           <meta name="generator" content="microCMS" />
           <meta property="og:title" content="54字の物語ジェネレーター #54字の物語" />
           <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://ujiqn.github.io/54-novel/" />
-          <meta property="og:image" content="https://ujiqn.github.io/54-novel/ogp.png" />
+          <meta property="og:url" content="https://54.ujiqn.com" />
+          <meta property="og:image" content="https://54.ujiqn.com/ogp.png" />
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />
           <meta property="og:site_name" content="54字の物語ジェネレーター #54字の物語" />
@@ -28,17 +28,17 @@ export default class Layout extends Document {
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content="54字の物語ジェネレーター #54字の物語" />
           <meta name="twitter:description" content="『54字の物語』重版記念！54字詰めの原稿用紙で物語をつくりましょう！" />
-          <meta name="twitter:image:src" content="https://ujiqn.github.io/54-novel/ogp.png" />
+          <meta name="twitter:image:src" content="https://54.ujiqn.com/ogp.png" />
           <meta name="format-detection" content="telephone=no" />
-          <link rel="shortcut icon" href="https://ujiqn.github.io/54-novel/favicon.ico" />
-          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121940062-1"></script>
+          <link rel="shortcut icon" href="https://54.ujiqn.com/favicon.ico" />
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-VS860CVJFF"></script>
           <script
             dangerouslySetInnerHTML={{__html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
 
-              gtag('config', 'UA-121940062-1');
+              gtag('config', 'G-VS860CVJFF');
             `}}
           />
         </Head>

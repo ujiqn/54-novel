@@ -260,10 +260,13 @@ export default function IndexPage() {
     <div
       className={ styles.index }
       style={{ opacity: isInit ? 1 : 0 }}
-     >
-      <canvas
-        ref={ canvasRef }
-      />
+    >
+      <figure>
+        <canvas
+          ref={ canvasRef }
+        />
+        <img src={ href } />
+      </figure>
       <div
         ref={ txtRef }
         className={ styles.txt } 

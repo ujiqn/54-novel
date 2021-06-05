@@ -31,6 +31,8 @@ export default class Layout extends Document {
           <meta name="twitter:image:src" content="https://54.ujiqn.com/ogp.png" />
           <meta name="format-detection" content="telephone=no" />
           <link rel="shortcut icon" href="https://54.ujiqn.com/favicon.ico" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet" />
           <script async src="https://www.googletagmanager.com/gtag/js?id=G-VS860CVJFF"></script>
           <script
             dangerouslySetInnerHTML={{__html: `

@@ -273,13 +273,13 @@ export default function IndexPage() {
         contentEditable={ true }
         suppressContentEditableWarning={ true }
       >{ novel }</div>
-      { getNews() }
       <a
         id="btn-download"
         className={ `${styles.btn} ${styles['btn-save']}` }
         href={ href }
         download="54"
       >画像を保存</a>
+      { getNews() }
       <div className={ styles.box }>
         <h1>54字の物語 好評発売中!!</h1>
         <p>たった54字の新感覚ショートストーリー。<br />意味がわかるとゾクゾクする90の物語を収録!</p>

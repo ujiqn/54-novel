@@ -41,21 +41,24 @@
 
 .btn {
   display: block;
-  margin: 10px auto;
   border-bottom: solid #333 4px;
   border-radius: 12px;
-  width: 288px; height: 60px;
   color: #eee;
   cursor: pointer;
   font-size: 18px;
   font-weight: bold;
   letter-spacing: .2em;
-  line-height: 60px;
   text-decoration: none;
   text-align: center;
   background: linear-gradient(#5a5a5a, #4e4e4e);
   box-shadow: 0 4px 4px rgba(0, 0, 0, .2);
   user-select: none;
+}
+
+.btn-l {
+  margin: 10px auto;
+  width: 288px; height: 60px;
+  line-height: 60px;
 }
 
 .box {

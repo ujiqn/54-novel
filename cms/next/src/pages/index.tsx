@@ -6,6 +6,12 @@ declare global {
   interface Window {
     gtag: (name: string, value: string) => void;
   }
+  interface ShareData {
+    files?: File[];
+    text?: string;
+    title?: string;
+    url?: string;
+  }
 }
 
 export default function IndexPage() {
@@ -315,7 +321,7 @@ export default function IndexPage() {
       >{ novel }</div>
       <a
         id="btn-download"
-        className={ `${ styles.btn }` }
+        className={ `${ styles.btn } ${ styles['btn-l'] }` }
         href={ href }
         download="54"
       >画像を保存</a>
@@ -328,7 +334,7 @@ export default function IndexPage() {
           <a
             onClick={ handleClickBtnShare }
             id="btn-share"
-            className={ `${ styles.btn }` }
+            className={ `${ styles.btn } ${ styles['btn-l'] }` }
           >画像をシェア</a>
         );
       })()}

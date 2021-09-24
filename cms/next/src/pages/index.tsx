@@ -292,7 +292,7 @@ export default function IndexPage() {
     const file = canvasToPngFile(canvasRef.current);
 
     navigator.share({
-      text: `${ text.join('') }${ hashtags ? ` ${ hashtags }` : '' }`,
+      text: `${ hashtags ? ` ${ hashtags }` : '' }`,
       // url: `${ location.protocol }//${ location.hostname }${ location.pathname }`,
       files: file ? [ file ] : undefined
     }).then(() => {

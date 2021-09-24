@@ -6,6 +6,12 @@ declare global {
   interface Window {
     gtag: (name: string, value: string) => void;
   }
+  interface ShareData {
+    files?: File[];
+    text?: string;
+    title?: string;
+    url?: string;
+  }
 }
 
 export default function IndexPage() {
@@ -16,6 +22,7 @@ export default function IndexPage() {
   const [ novel, setNovel ] = useState('');
   const [ news, setNews ] = useState([]);
   const [ books, setBooks ] = useState([]);
+  const [ hashtags, setHashtags ] = useState('');
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const txtRef = useRef<HTMLDivElement>(null);
   const WIDTH = 550;
@@ -48,6 +55,9 @@ export default function IndexPage() {
         axios.get('https://54ji.microcms.io/api/v1/books', {
           headers
         }),
+        axios.get('https://54ji.microcms.io/api/v1/hashtags', {
+          headers
+        })
       ]).then((res) => {
         setNovel(res[0].data.novel);
         setNews(res[1].data.contents.reverse());
@@ -256,6 +266,42 @@ export default function IndexPage() {
     window.gtag('event', String(elm.dataset.ga));
   }
 
+  function canvasToPngFile(canvas) {
+    const type = 'image/png';
+    const dataUrl = canvas.toDataURL(type);
+    const decodedData = window.atob(dataUrl.replace(/^.*,/, ''));
+    const buffers = new Uint8Array(decodedData.length);
+
+    for (let i = 0; i < decodedData.length; ++i) {
+      buffers[i] = decodedData.charCodeAt(i);
+    }
+
+    try {
+      const blob = new Blob([buffers.buffer], {
+        type
+      });
+
+      return new File([ blob ], '54.png', { type });
+
+    } catch {
+      return null;
+    }
+  }
+
+  function handleClickBtnShare() {
+    const file = canvasToPngFile(canvasRef.current);
+
+    navigator.share({
+      text: `${ hashtags ? ` ${ hashtags }` : '' }`,
+      // url: `${ location.protocol }//${ location.hostname }${ location.pathname }`,
+      files: file ? [ file ] : undefined
+    }).then(() => {
+      window.gtag('event', 'share');
+    }).catch((err) => {
+      console.error(err);
+    });
+  }
+
   return (
     <div
       className={ styles.index }
@@ -275,10 +321,23 @@ export default function IndexPage() {
       >{ novel }</div>
       <a
         id="btn-download"
-        className={ `${styles.btn} ${styles['btn-save']}` }
+        className={ `${ styles.btn } ${ styles['btn-l'] }` }
         href={ href }
         download="54"
       >画像を保存</a>
+      {(() => {
+        if (process.browser && !window.navigator.share) {
+          return;
+        }
+
+        return (
+          <a
+            onClick={ handleClickBtnShare }
+            id="btn-share"
+            className={ `${ styles.btn } ${ styles['btn-l'] }` }
+          >画像をシェア</a>
+        );
+      })()}
       { getNews() }
       <div className={ styles.box }>
         <h1>54字の物語 好評発売中!!</h1>

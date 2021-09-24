@@ -12,7 +12,6 @@ export default class Layout extends Document {
       <Html>
         <Head>
           <title>54字の物語ジェネレーター #54字の文学賞</title>
-{/*
           <script
             dangerouslySetInnerHTML={{__html: `
               if (location.hostname !== '54.ujiqn.com') {
@@ -20,7 +19,6 @@ export default class Layout extends Document {
               }
             `}}
           />
-*/}
           <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no" />
           <meta name="description" content="54字ぴったりの物語をつくりましょう。" />
           <meta name="keywords" content="54字の物語,#54字の文学賞,氏田雄介" />

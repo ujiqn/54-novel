@@ -22,7 +22,7 @@ export default function IndexPage() {
   const [ novel, setNovel ] = useState('');
   const [ news, setNews ] = useState([]);
   const [ books, setBooks ] = useState([]);
-  const [ hashtags, setHashtags ] = useState('');
+  const [ hashtags ] = useState('#54字の物語');
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const txtRef = useRef<HTMLDivElement>(null);
   const WIDTH = 550;
@@ -335,7 +335,7 @@ export default function IndexPage() {
             onClick={ handleClickBtnShare }
             id="btn-share"
             className={ `${ styles.btn } ${ styles['btn-l'] }` }
-          >画像をシェア</a>
+          >画像を投稿</a>
         );
       })()}
       { getNews() }
